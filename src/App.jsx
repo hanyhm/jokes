@@ -9,30 +9,30 @@ function App() {
 
   // fetching joke
 
-    useEffect((()=>{
-      fetch('https://official-joke-api.appspot.com/jokes/random')
-      .then(res=>{return res.json()})
-      .then(data=>{SetJoke(data)})
-    }
-    ),[pullJoke]);
-    
+  useEffect((() => {
+    fetch('https://official-joke-api.appspot.com/jokes/random')
+      .then(res => { return res.json() })
+      .then(data => { SetJoke(data) })
+  }
+  ), [pullJoke]);
+
 
   // render fetch, grab a new joke !
 
-  function grabJoke(){
+  function grabJoke() {
     SetpullJoke(!pullJoke);
   }
 
- // return joke to the interface
+  // return joke to the interface
 
   return (
-   <div>
-    <h3 style={{color:"blue"}}>Joke of the Day, Please Click button below to get a new joke!</h3>
-      <h2>{joke && "Joke ID:  "+joke.id+" Joke Type:  "+joke.type}</h2>
+    <div>
+      <h3>Joke of the Day, Please Click button below to get a new joke!</h3>
+      <h2>{joke && "Joke ID:  " + joke.id + " Joke Type:  " + joke.type}</h2>
       <h1>{joke && joke.setup}</h1>
-        <h1>{joke && joke.punchline}</h1>
-    <button id="button" onClick={grabJoke} className="button">Click me to get a new joke</button>
-   </div>   
+      <h1>{joke && joke.punchline}</h1>
+      <button id="button" onClick={grabJoke} className="button">Click me to get a new joke</button>
+    </div>
   );
 }
 
